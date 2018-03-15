@@ -52,19 +52,17 @@ Naming
   setter functions use the name without suffix:
 
   ```cpp
-  class person {
-  public:
-    const std::string& name() const {
-      return name_
-    }
-
-    void name(const std::string& new_name) {
-      name_ = new_name;
-    }
-
-  private:
-    std::string name_;
-  };
+    class person {
+    public:
+        const std::string& name() const {
+            return name_;
+        }
+        void name(const std::string& new_name) {
+            name_ = new_name;
+        }
+        private:
+        std::string name_;
+    };
   ```
 
 - Use `T` for generic, unconstrained template parameters and `x`
@@ -72,15 +70,15 @@ Naming
   template parameter packs:
 
   ```cpp
-  template <class... Ts>
-  void print(const Ts&... xs) {
-    // ...
-  }
+    template <class... Ts>
+    void print(const Ts&... xs) {
+        // ...
+    }
   ```
 General
 -------
 
-- Use 2 spaces per indentation level.
+- Use 4 spaces per indentation level.
 
 - Never use tabs.
 
@@ -114,44 +112,37 @@ General
 - Put opening braces on the same line:
 
   ```cpp
-  void foo() {
-    // ...
-  }
+    void foo() {
+        // ...
+    }
   ```
 
 - Use standard order for readability: C standard libraries, C++ standard
   libraries, OS-specific headers (usually guarded by `ifdef`), other libraries,
   and finally. 
   ```cpp
-  // example.hpp
-  
-  #include <vector>
-
-  #include <sys/types.h>
-
-  #include "3rd/party.h"
-
-  #include "magic/fwd.hpp"
+    // example.hpp
+    #include <vector>
+    #include <sys/types.h>
+    #include "3rd/party.h"
+    #include "magic/fwd.hpp"
   ```
 
   Put the implemented header always first in a `.cpp` file.
 
   ```cpp
-  // example.cpp
-  
-  #include "golos/example.hpp" // header for this .cpp file
-  
-  #include "golos/config.hpp" // needed for #ifdef guards
-  
-  #include <algorithm>
+    // example.cpp
+    #include "golos/example.hpp" // header for this .cpp file
+    #include "golos/config.hpp" // needed for #ifdef guards
+    #include <algorithm>
 
-  #ifdef GOLOS_WINDOWS
-  #include <windows.h>
-  #else
-  #include <sys/socket.h>
-  #endif
+    #ifdef GOLOS_WINDOWS
+    #include <windows.h>
+    #else
+    #include <sys/socket.h>
+    #endif
 
-  #include "some/other/library.h"
+    #include "some/other/library.h"
 
 
   ```
@@ -185,38 +176,38 @@ Breaking Statements
   need to break at all):
 
   ```cpp
-  my_class::my_class():
-    my_base_class(some_function()),
-    greeting_("Hello there! This is my_class!"),
-    some_bool_flag_(false) {
-    // ok
-  }
-  other_class::other_class() :
-    name_("tommy"),
-    buddy_("michael") {
-    // ok
-  }
+    my_class::my_class():
+        my_base_class(some_function()),
+        greeting_("Hello there! This is my_class!"),
+        some_bool_flag_(false) {
+        // ok
+    }
+    other_class::other_class() :
+        name_("tommy"),
+        buddy_("michael") {
+        // ok
+    }
   ```
 
 - Break function arguments after the comma for both declaration and invocation:
 
   ```cpp
-  intptr_t channel::compare(
-    const abstract_channel* lhs,
-    const abstract_channel* rhs
-  ) {
+    intptr_t channel::compare(
+        const abstract_channel* lhs,
+        const abstract_channel* rhs
+    ) {
     // ...
-  }
+    }
   ```
 
 - Break before tenary operators and before binary operators:
 
   ```cpp
-  if (
-    today_is_a_sunny_day()
-      && 
-      it_is_not_too_hot_to_go_swimming()
-      ) {///
+    if (
+        today_is_a_sunny_day()
+        && 
+        it_is_not_too_hot_to_go_swimming()
+    ) {///
     // ...
-  }
+    }
   ```
